@@ -32,7 +32,7 @@ var app = new Vue({
             if(!$("input[type=file]").prop('files').length){
                 this.is_submitting = false;
                 this.alert_class = 'errormsg';
-                this.alert_msg = 'Invalid info';
+                this.alert_msg = 'Invalid info'
                 tinymce.activeEditor.setMode('design');
                 return null;
             }
@@ -47,8 +47,15 @@ var app = new Vue({
                 contentType: false,
                 processData: false
             }).then((response) =>{
-                this.is_submitting = false;
-                tinymce.activeEditor.setMode('design');
+                if(response.status == 2){
+                    this.alert_class = 'succesmsg';
+                    this.alert_msg = 'Success, you are now being redirected';
+                }else{
+                    this.is_submitting = false;
+                    this.alert_class = 'errormsg';
+                    this.alert_msg = 'Invalid info';
+                    tinymce.activeEditor.setMode('design');
+                }
             });
         }
     }
