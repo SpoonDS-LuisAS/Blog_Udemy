@@ -21,3 +21,4 @@ Route.post( '/login', 'AuthController.auth' ).middleware(['guest_only']);
 Route.get( '/logout', 'AuthController.logout' );
 Route.post( '/register', 'RegisterController.register' ).middleware(['guest_only']);
 Route.on('/submit').render('submit').middleware(['auth_required']);
+Route.post('/submit', 'PostSubmissionController.submit').middleware(['auth_required']);

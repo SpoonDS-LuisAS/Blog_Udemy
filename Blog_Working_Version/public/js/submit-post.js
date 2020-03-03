@@ -20,6 +20,36 @@ var app = new Vue({
             this.show_alert = true;
             this.alert_class = 'infomsg';
             this.alert_msg = 'Please wait while your post is being processed.';
+
+            tinymce.activeEditor.setMode('readonly');
+            
+            let form_data = new FormData();
+            form_data.append('_csrf', this.form._csrf);
+            form_data.append('title', this.form.title);
+            form_data.append('category', this.form.category);
+            form_data.append('content', tinymce.activeEditor.getContent());
+
+            if(!$("input[type=file]").prop('files').length){
+                this.is_submitting = false;
+                this.alert_class = 'errormsg';
+                this.alert_msg = 'Invalid info';
+                tinymce.activeEditor.setMode('design');
+                return null;
+            }
+            
+            form_data.append('img',$("input[type=file]").prop('files')[0]);
+
+            $.ajax({
+                url: '/submit',
+                data: form_data,
+                type: 'POST',
+                cache: false,
+                contentType: false,
+                processData: false
+            }).then((response) =>{
+                this.is_submitting = false;
+                tinymce.activeEditor.setMode('design');
+            });
         }
     }
 });
