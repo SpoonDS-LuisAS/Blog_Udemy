@@ -4,10 +4,11 @@ const Post = use('App/Models/Post');
 
 class HomeController {
     async index({view}){
-        const posts = await Post.query().orderBy('id', 'desc').fetch();
-        return posts;
+        const posts = await Post.query().orderBy('id', 'desc');
 
-        return view.render('home');
+        return view.render('home', {
+            posts: posts
+        }.fetch());
     }
 }
 
