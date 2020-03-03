@@ -21,14 +21,14 @@ class PostSubmissionController {
             types:['image'],
             size:'5mb'
         });
-        const file_name = Utility.get_random_str(8)+'.'+img._clientName.split('.').pop();
+        const file_name = Utility.get_random_str(8)+'.'+img.clientName.split('.').pop();
         await img.move(Helpers.publicPath('uploads'), {
             name: file_name
         });
         if(!img.moved()){
             return output;
         }
-        const{title, category, content} = request.all();
+        const {title, category, content} = request.all();
         const new_post = new Post();
         const user = await auth.getUser();
 
@@ -41,6 +41,7 @@ class PostSubmissionController {
         await new_post.save();
 
         output.status = 2;
+        output.post_id = new_post.id;
         return output;
     }
 }

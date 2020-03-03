@@ -48,8 +48,9 @@ var app = new Vue({
                 processData: false
             }).then((response) =>{
                 if(response.status == 2){
-                    this.alert_class = 'succesmsg';
+                    this.alert_class = 'successmsg';
                     this.alert_msg = 'Success, you are now being redirected';
+                    location.href = '/post/' + response.post_id;
                 }else{
                     this.is_submitting = false;
                     this.alert_class = 'errormsg';
