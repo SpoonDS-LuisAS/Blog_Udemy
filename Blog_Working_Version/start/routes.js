@@ -16,8 +16,8 @@
 const Route = use('Route')
 
 Route.on('/').render('home')
-Route.on( '/login' ).render( 'auth' );
-Route.post( '/login', 'AuthController.auth' );
+Route.on( '/login' ).render( 'auth' ).middleware(['guest_only']);
+Route.post( '/login', 'AuthController.auth' ).middleware(['guest_only']);
 Route.get( '/logout', 'AuthController.logout' );
-Route.post( '/register', 'RegisterController.register' );
+Route.post( '/register', 'RegisterController.register' ).middleware(['guest_only']);
 Route.on('/submit').render('submit').middleware(['auth_required']);
