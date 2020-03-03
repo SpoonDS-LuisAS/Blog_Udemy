@@ -1,14 +1,20 @@
 'use strict'
 
-const Post = use('App/Models/Post');
+const Post                  =   use( 'App/Models/Post' );
 
 class HomeController {
-    async index({view}){
-        const posts = await Post.query().orderBy('id', 'desc');
+    async index({ view, request }){
+        const current_page  =   parseInt( request.input( 'p', 1 ) );
+        const posts         =   await Post.query()
+            .orderBy( 'id', 'desc' )
+            .paginate( current_page, 6 );
 
-        return view.render('home', {
-            posts: posts
-        }.fetch());
+        // return posts;
+        // console.log( posts );
+
+        return view.render( 'home', {
+            posts:              posts.toJSON()
+        });
     }
 }
 

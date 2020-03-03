@@ -15,11 +15,16 @@ const Factory = use('Factory')
 
 Factory.blueprint('App/Models/Post', (faker) => {
   return {
-    title: 'This is an example title',
-    img_url: '/uploads/post.jpg',
-    post_content: `<p>Dummy content</p><p>Dummy content</p><p>Dummy content</p><p>Dummy content</p>`,
-    uid: 1,
-    cid: 1
+    title:            'This is an example title',
+    img_url:          '/uploads/post.jpg',
+    post_content:     `<p>Dummy content.</p>
+                       <p>Dummy content.</p>
+                       <p>Dummy content.</p>
+                       <p>Dummy content.</p>
+                       <p>Dummy content.</p>
+                       <p>Dummy content.</p>`,
+    uid:              1,
+    cid:              1
   }
 })
 

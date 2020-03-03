@@ -10,12 +10,12 @@
 |
 */
 
-/** @type {import('@adonisjs/lucid/src/Factory')} */
 const Factory = use('Factory')
 
 class PostSeeder {
   async run () {
-    await Factory.model('App/Models/Post').createMany(20);
+    await Factory.model( 'App/Models/Post' )
+                 .createMany( 20 );
   }
 }
 
