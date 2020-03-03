@@ -1,6 +1,8 @@
 'use strict'
 
 const {validate} = use("Validator");
+const Utility = use('Utility');
+const Helpers = use('Helpers');
 
 class PostSubmissionController {
     async submit({request}){
@@ -11,6 +13,17 @@ class PostSubmissionController {
             content:'required|string'
         });
         if(post_validation.fails()){
+            return output;
+        }
+        const img = request.file('img', {
+            types:['image'],
+            size:'5mb'
+        });
+        const file_name = Utility.get_random_str(8)+'.'+img._clientName.split('.').pop();
+        await img.move(Helpers.publicPath('uploads'), {
+            name: file_name
+        });
+        if(!img.moved()){
             return output;
         }
     }
