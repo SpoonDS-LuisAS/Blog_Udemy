@@ -21,7 +21,7 @@
 
             <div class="tabs divcenter nobottommargin clearfix" id="tab-login-register" style="max-width: 500px;">
 
-                {{csrfField()}}
+                {{ csrfField() }}
 
                 <ul class="tab-nav tab-nav2 center clearfix">
                     <li class="inline-block"><a href="#tab-login">Login</a></li>
@@ -33,24 +33,31 @@
                     <div class="tab-content clearfix" id="tab-login">
                         <div class="panel panel-default nobottommargin">
                             <div class="panel-body" style="padding: 40px;">
-                                <form class="nobottommargin" @submit.prevent="login()">
+                                <form class="nobottommargin" 
+                                      @submit.prevent="login()">
 
                                     <h3>Login to your Account</h3>
 
-                                    <div class="style-msg" :class="[login_alert_class]" v-if="login_show_alert">
+                                    <div class="style-msg" 
+                                         :class="[login_alert_class]"
+                                         v-if="login_show_alert">
                                         <div class="sb-msg">
-                                            {{{login_alert_msg}}}
+                                            @{{ login_alert_msg }}
                                         </div>
                                     </div>
 
                                     <div class="col_full">
                                         <label>Username:</label>
-                                        <input type="text" class="form-control" :disabled="login_is_submitting" v-model="user_login.username"/>
+                                        <input type="text" class="form-control" 
+                                               :disabled="login_is_submitting"
+                                                v-model="user_login.username"/>
                                     </div>
 
                                     <div class="col_full">
                                         <label>Password:</label>
-                                        <input type="password" class="form-control" :disabled="login_is_submitting" v-model="user_login.password"/>
+                                        <input type="password" class="form-control" 
+                                               :disabled="login_is_submitting"
+                                                v-model="user_login.password"/>
                                     </div>
 
                                     <div class="col_full nobottommargin">
@@ -72,7 +79,7 @@
                                          :class="[reg_alert_class]"
                                          v-if="reg_show_alert">
                                         <div class="sb-msg">
-                                            {{{ reg_alert_msg }}}
+                                            @{{ reg_alert_msg }}
                                         </div>
                                     </div>
 
@@ -130,6 +137,6 @@
 @endsection
 
 @section( 'scripts' )
-    {{ script( 'https://cdn.jsdelivr.net/npm/vue' ) }}
+    {{ script( 'https://unpkg.com/vue@2.3.3/dist/vue.js' ) }}
     {{ script( 'js/auth.js' ) }}
 @endsection

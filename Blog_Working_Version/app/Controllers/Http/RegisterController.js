@@ -1,7 +1,7 @@
 'use strict'
 
-const { validate } = use('Validator');
-const User = use('App/Models/User');
+const { validate }                  =   use( 'Validator' );
+const User                          =   use( 'App/Models/User' );
 
 class RegisterController {
     async register({ request, auth }){
