@@ -15,7 +15,7 @@
 
 const Route = use('Route')
 
-Route.on('/').render('home')
+Route.get('/', 'HomeController.index');
 Route.on( '/login' ).render( 'auth' ).middleware(['guest_only']);
 Route.post( '/login', 'AuthController.auth' ).middleware(['guest_only']);
 Route.get( '/logout', 'AuthController.logout' );
