@@ -48,7 +48,7 @@ const aceProviders = [
 |
 */
 const aliases = {
-  Utility: 'app/utility'
+  Utility: 'App/utility'
 }
 
 /*
