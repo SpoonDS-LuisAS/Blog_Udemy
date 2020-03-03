@@ -6,7 +6,7 @@ var app = new Vue({
         form: {
             _csrf: $('input[name=_csrf]').val(),
             title: '',
-            category: 1,
+            category: 1
             
         },
         is_submitting: false,

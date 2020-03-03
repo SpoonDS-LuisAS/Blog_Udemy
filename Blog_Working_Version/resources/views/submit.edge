@@ -6,14 +6,14 @@
 
 			<div class="content-wrap">
 
-				<div class="container clearfix">
+				<div class="container clearfix" id="app">
 					
-                    <div class="heading-block center" id="app">
+                    <div class="heading-block center">
                         <h1>Submit Post</h1>
                         <span>Got something worth sharing? Submit it here!</span>
                     </div>
     
-                    <div class="style-msg" :class="[alert_class]" v-if="show_alert" >
+                    <div class="style-msg" v-if="show_alert" :class="[alert_class]">
                         <div class="sb-msg">
                             @{{alert_msg}}
                         </div>
@@ -23,7 +23,7 @@
                         {{csrfField()}}
                         <div class="form-group">
                             <label>Title</label>
-                            <input type="text" class="form-control" placeholder="Title" v-model="form.title" :disable="is_submitting">
+                            <input type="text" class="form-control" placeholder="Title" v-model="form.title" :disabled="is_submitting">
 						</div>
 						<div class="form-group">
 							<label>Category</label>
@@ -35,14 +35,14 @@
 						</div>
                         <div class="form-group">
                             <label>Image</label>
-							<input type="file" class="form-control" :disable="is_submitting">
+							<input type="file" class="form-control" :disabled="is_submitting">
                         </div>
                         <div class="form-group">
                             <label>Content</label>
                             <textarea class="form-control" id="post-content" rows="10"></textarea>
                         </div>
                         <div class="form-group">
-                            <button type="submit" class="btn btn-primary" :disable="is_submitting">
+                            <button type="submit" class="btn btn-primary" :disabled="is_submitting">
                                 Submit
                             </button>
                         </div>
@@ -55,7 +55,7 @@
 		</section><!-- #content end -->
 @endsection
 
-@section('name')
+@section('scripts')
   {{ script('tinymce/tinymce.min.js') }}
   {{ script('https://unpkg.com/vue@2.4.4/dist/vue.js') }}
   {{ script('js/submit-post') }}
