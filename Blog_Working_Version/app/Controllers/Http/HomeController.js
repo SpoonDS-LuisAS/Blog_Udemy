@@ -6,10 +6,11 @@ class HomeController {
     async index({ view, request }){
         const current_page  =   parseInt( request.input( 'p', 1 ) );
         const posts         =   await Post.query()
+            .with('author')
             .orderBy( 'id', 'desc' )
             .paginate( current_page, 6 );
 
-        // return posts;
+        //return posts;
         // console.log( posts );
 
         return view.render( 'home', {

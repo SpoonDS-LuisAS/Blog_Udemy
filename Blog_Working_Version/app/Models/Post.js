@@ -6,6 +6,10 @@ class Post extends Model {
     static get table(){
         return 'posts';
     }
+
+    author(){
+        return this.hasOne('App/Model/User', 'uid', 'id');
+    }
 }
 
 module.exports = Post
